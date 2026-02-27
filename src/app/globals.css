@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0d0d0d;
+  --foreground: #ffffff;
+  --accent: #e10600;
+  --panel: #151515;
+}
+
+* {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: radial-gradient(circle at top, #1a1a1a 0%, #0d0d0d 45%);
+  color: var(--foreground);
+}
+
+.noise {
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+}
