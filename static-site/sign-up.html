@@ -1,18 +1,64 @@
 <!doctype html>
 <html lang="en">
   <head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Sign Up | Punch For Purpose</title><link rel="stylesheet" href="assets/styles.css" /></head>
-  <body>
-    <header class="site-header"><div class="container nav"><a href="index.html" class="logo">PUNCH <span>FOR PURPOSE</span></a><nav class="nav-links"><a href="events.html">Events</a><a href="tickets.html">Tickets</a></nav></div></header>
-    <section class="section"><div class="container" style="max-width:760px"><h1>Sign Up</h1><p>Limited spaces available.</p>
-      <form data-static-form class="card">
-        <div class="split"><input class="field" placeholder="Full Name" required/><input class="field" type="email" placeholder="Email" required/></div>
-        <div class="split"><input class="field" placeholder="Phone" required/><input class="field" placeholder="City" required/></div>
-        <input class="field" placeholder="Fitness experience" required/>
-        <textarea rows="3" placeholder="Why do you want to join?" required></textarea>
-        <input class="field" placeholder="Emergency contact" required/>
-        <button class="btn primary" type="submit">Pay £50 & Continue</button>
-      </form>
-    </div></section>
+  <body class="signup-page">
+    <header class="site-header"><div class="container nav"><a href="index.html" class="logo">PUNCH <span>FOR PURPOSE</span></a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation"><span></span><span></span><span></span></button><nav class="nav-links" id="site-nav"><a href="events.html">Events</a><a href="tickets.html">Tickets</a></nav></div></header>
+    <section class="section signup-hero">
+      <div class="container">
+        <span class="how-kicker">Fighter Applications</span>
+        <h1>Sign Up To Join The Next Intake</h1>
+        <p class="signup-hero-lead">Start your 8-week journey, train with elite coaches, and step into fight night while raising money for charity. Spaces are limited for each event cycle.</p>
+      </div>
+    </section>
+
+    <section class="section tight">
+      <div class="container signup-layout">
+        <article class="signup-benefits">
+          <div class="signup-benefits-media" aria-hidden="true"></div>
+          <div class="signup-benefits-body">
+            <span class="event-pill">What You Get</span>
+            <h2>Your Registration Includes</h2>
+            <ul class="signup-list">
+              <li>8 weeks of structured beginner-friendly coaching</li>
+              <li>Starter gloves and onboarding support</li>
+              <li>Fundraising guidance for your chosen cause</li>
+              <li>Professionally produced fight-night experience</li>
+            </ul>
+            <div class="signup-meta-grid">
+              <div><strong>Fee:</strong> £50 registration</div>
+              <div><strong>City:</strong> Portsmouth launch intake</div>
+              <div><strong>Level:</strong> Complete beginners welcome</div>
+            </div>
+          </div>
+        </article>
+
+        <form data-static-form class="card signup-form">
+          <h3>Start Application</h3>
+          <p class="signup-form-lead">Complete this form to secure your place in the next fighter intake.</p>
+          <div class="split"><input class="field" placeholder="Full Name" required/><input class="field" type="email" placeholder="Email" required/></div>
+          <div class="split"><input class="field" placeholder="Phone" required/><input class="field" placeholder="City" required/></div>
+          <select required>
+            <option value="">Select Preferred Event</option>
+            <option>Portsmouth Launch Night — 4 July 2026</option>
+            <option>South Coast Card #2 (Priority Waitlist)</option>
+          </select>
+          <input class="field" placeholder="Current fitness or training experience" required/>
+          <textarea rows="3" placeholder="Why do you want to join Punch For Purpose?" required></textarea>
+          <input class="field" placeholder="Emergency contact name & phone" required/>
+          <button class="btn primary" type="submit">Pay £50 & Continue</button>
+          <p class="signup-note">Applications are reviewed in intake order. You will receive confirmation and next-step guidance by email.</p>
+        </form>
+      </div>
+    </section>
+
+    <section class="section tight alt">
+      <div class="container signup-trust">
+        <div><strong>Limited Spaces:</strong> Intakes cap to maintain coaching quality</div>
+        <div><strong>Safety First:</strong> Structured progression and coach-led sessions</div>
+        <div><strong>Purpose Driven:</strong> Every fighter journey supports charity fundraising</div>
+      </div>
+    </section>
+
     <footer class="site-footer"><div class="container">© 2026 Punch For Purpose</div></footer>
     <script src="assets/app.js"></script>
   </body>

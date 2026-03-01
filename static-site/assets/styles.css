@@ -35,10 +35,19 @@ a {
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: 300;
   background: rgba(13, 13, 13, 0.96);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(8px);
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+.site-header .container {
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
 .nav {
@@ -46,6 +55,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
 
 .logo {
@@ -64,6 +74,39 @@ a {
   font-weight: 700;
 }
 
+.nav-toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.03);
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  width: 18px;
+  height: 2px;
+  background: #fff;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.site-header.menu-open .nav-toggle span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.site-header.menu-open .nav-toggle span:nth-child(2) {
+  opacity: 0;
+}
+
+.site-header.menu-open .nav-toggle span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
 .hero {
   padding: 90px 0 70px;
   text-align: center;
@@ -73,18 +116,37 @@ a {
   min-height: 78vh;
   display: flex;
   align-items: center;
+  position: relative;
+  overflow: hidden;
   background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.55) 44%, rgba(0, 0, 0, 0.52) 100%),
-    url("https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=1920&q=80");
+    url("images/hero-home.jpg");
   background-size: cover;
   background-position: center;
 }
 
+.hero.hero-photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(8, 8, 8, 0.84) 0%, rgba(8, 8, 8, 0.42) 55%, rgba(8, 8, 8, 0.2) 100%);
+}
+
 .hero.hero-photo .container {
+  position: relative;
+  z-index: 1;
   text-align: left;
 }
 
 .hero.hero-photo .cta-row {
   justify-content: flex-start;
+}
+
+.hero-content {
+  max-width: 760px;
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: linear-gradient(145deg, rgba(14, 14, 14, 0.62), rgba(14, 14, 14, 0.24));
+  backdrop-filter: blur(2px);
 }
 
 .hero-lines {
@@ -109,7 +171,19 @@ a {
   border-radius: 999px;
   font-size: 12px;
   font-weight: 800;
+  letter-spacing: 0.6px;
   text-transform: uppercase;
+}
+
+.hero-title {
+  margin-top: 14px;
+}
+
+.hero-lead {
+  margin-top: 14px;
+  max-width: 62ch;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: clamp(15px, 1.7vw, 18px);
 }
 
 h1,
@@ -187,6 +261,10 @@ p {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.grid.cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .card {
   background: var(--panel);
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -244,6 +322,14 @@ p {
     url("https://images.unsplash.com/photo-1517438322307-e67111335449?auto=format&fit=crop&w=1200&q=80");
   background-size: cover;
   background-position: center;
+}
+
+.video-embed {
+  width: 100%;
+  min-height: 390px;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .video-play {
@@ -315,23 +401,358 @@ p {
 .promo-fundraising {
   grid-area: fundraising;
   min-height: 430px;
-  background-image: url("https://images.unsplash.com/photo-1520614073990-a6a1e3f6f6f9?auto=format&fit=crop&w=1400&q=80");
+  background-image: url("images/walking-to-the-ring.jpg");
 }
 
 .promo-training {
   grid-area: training;
   min-height: 215px;
-  background-image: url("https://images.unsplash.com/photo-1611077549989-2db1c4f533f0?auto=format&fit=crop&w=1400&q=80");
+  background-image: url("images/view-pair-boxing-gloves.jpg");
 }
 
 .promo-locations {
   grid-area: locations;
   min-height: 215px;
-  background-image: url("https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1400&q=80");
+  background-image: url("images/portsmouth-city.jpg");
 }
 
 .how-head {
   max-width: 760px;
+}
+
+.how-page-hero {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  background-image: linear-gradient(120deg, rgba(10, 10, 10, 0.88), rgba(10, 10, 10, 0.56)), url("images/sporty-man-boxing-photo-boxer-ring-strength-motivation.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.how-page-hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, rgba(225, 6, 0, 1), rgba(225, 6, 0, 0.35));
+}
+
+.how-page-hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.how-page-hero h1 {
+  margin-top: 8px;
+  font-size: clamp(40px, 6.2vw, 72px);
+  line-height: 1.02;
+}
+
+.how-page-hero p {
+  margin-top: 12px;
+  max-width: 62ch;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(15px, 1.8vw, 19px);
+  line-height: 1.58;
+}
+
+.process-strip {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.process-metric {
+  padding: 16px 10px;
+  text-align: center;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #cfcfcf;
+}
+
+.process-metric + .process-metric {
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.process-metric span {
+  display: block;
+  margin-bottom: 4px;
+  font-family: Oswald, Impact, Arial Black, sans-serif;
+  font-size: clamp(28px, 4vw, 42px);
+  color: #fff;
+}
+
+.process-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  gap: 22px;
+}
+
+.process-image {
+  min-height: 420px;
+  border-radius: 14px;
+  background-size: cover;
+  background-position: center;
+}
+
+.process-image-training {
+  background-image: linear-gradient(180deg, rgba(8, 8, 8, 0.15), rgba(8, 8, 8, 0.6)), url("images/lucas-and-mikey-together.jpg");
+  background-position: top center;
+}
+
+.process-copy {
+  display: grid;
+  align-content: center;
+}
+
+.process-card h2,
+.process-card h3 {
+  margin-bottom: 10px;
+  line-height: 1.06;
+}
+
+.process-card h2 {
+  font-size: clamp(28px, 3.6vw, 42px);
+}
+
+.process-card h3 {
+  font-size: clamp(24px, 3.1vw, 34px);
+}
+
+.process-card p {
+  margin: 0;
+  color: #d3d3d3;
+  line-height: 1.6;
+}
+
+.process-list {
+  margin: 14px 0 0;
+  padding-left: 0;
+  list-style: none;
+  color: #e7e7e7;
+  display: grid;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.process-list li {
+  position: relative;
+  padding-left: 20px;
+}
+
+.process-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.54em;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(225, 6, 0, 0.9);
+  box-shadow: 0 0 0 3px rgba(225, 6, 0, 0.18);
+}
+
+.weekly-grid .card {
+  min-height: 150px;
+  border-left: 3px solid rgba(225, 6, 0, 0.7);
+  padding: 20px;
+}
+
+.how-head-centered {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.camp-timeline {
+  position: relative;
+  margin-top: 24px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  gap: 0;
+  padding: 0;
+}
+
+.camp-timeline::before {
+  content: "";
+  position: absolute;
+  left: 156px;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(225, 6, 0, 0.75), rgba(225, 6, 0, 0.16));
+}
+
+.camp-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 28px;
+  align-items: start;
+  padding: 20px 0 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  transition: transform 0.2s ease;
+}
+
+.camp-row::before {
+  content: "";
+  position: absolute;
+  left: 151px;
+  top: 28px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(225, 6, 0, 1);
+  box-shadow: 0 0 0 5px rgba(225, 6, 0, 0.16);
+}
+
+.camp-row:hover {
+  transform: translateX(4px);
+}
+
+.camp-content {
+  display: grid;
+  grid-template-columns: minmax(180px, 230px) 1fr;
+  gap: 18px;
+  align-items: center;
+}
+
+.camp-row:nth-child(even) .camp-media {
+  order: 2;
+}
+
+.camp-row:nth-child(even) .camp-copy {
+  padding-left: 14px;
+}
+
+.camp-media {
+  width: 100%;
+  min-height: 190px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background-size: cover;
+  background-position: center top;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+.camp-media-foundations {
+  background-image: linear-gradient(180deg, rgba(8, 8, 8, 0.2), rgba(8, 8, 8, 0.45)), url("images/boxing-gloves-lying-empty-ring.jpg");
+}
+
+.camp-media-technique {
+  background-image: linear-gradient(180deg, rgba(8, 8, 8, 0.2), rgba(8, 8, 8, 0.45)), url("images/pair-gloves-boxing-sport.jpg");
+}
+
+.camp-media-sparring {
+  background-image: linear-gradient(180deg, rgba(8, 8, 8, 0.2), rgba(8, 8, 8, 0.45)), url("images/side-view-male-boxer-sparring.jpg");
+}
+
+.camp-media-prep {
+  background-image: linear-gradient(180deg, rgba(8, 8, 8, 0.2), rgba(8, 8, 8, 0.45)), url("images/walking-to-the-ring.jpg");
+}
+
+.camp-week {
+  display: block;
+  font-family: Oswald, Impact, Arial Black, sans-serif;
+  text-transform: uppercase;
+  color: rgba(225, 6, 0, 0.96);
+  letter-spacing: 0.8px;
+  font-size: 22px;
+  line-height: 1;
+  padding-top: 2px;
+}
+
+.camp-row h3 {
+  margin: 0;
+  font-size: clamp(30px, 3.4vw, 44px);
+  line-height: 1.02;
+}
+
+.camp-row p {
+  margin: 10px 0 0;
+  color: #d6d6d6;
+  max-width: 62ch;
+  line-height: 1.58;
+}
+
+.process-faq-list {
+  margin-top: 20px;
+  display: grid;
+  gap: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(20, 20, 20, 0.86), rgba(13, 13, 13, 0.86));
+  padding: 10px;
+}
+
+.process-faq {
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  background: rgba(10, 10, 10, 0.45);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.process-faq summary {
+  position: relative;
+  cursor: pointer;
+  list-style: none;
+  font-family: Oswald, Impact, Arial Black, sans-serif;
+  text-transform: uppercase;
+  font-size: clamp(18px, 2.4vw, 24px);
+  letter-spacing: 0.4px;
+  padding: 16px 56px 16px 18px;
+  line-height: 1.1;
+}
+
+.process-faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.process-faq summary::after {
+  content: "+";
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  border: 1px solid rgba(225, 6, 0, 0.6);
+  background: rgba(225, 6, 0, 0.14);
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  color: #fff;
+}
+
+.process-faq p {
+  margin: 0;
+  padding: 0 18px 16px;
+  color: #d8d8d8;
+  line-height: 1.6;
+}
+
+.process-faq[open] {
+  border-color: rgba(225, 6, 0, 0.55);
+  background: linear-gradient(180deg, rgba(34, 17, 17, 0.92), rgba(14, 14, 14, 0.92));
+}
+
+.process-faq[open] summary::after {
+  content: "−";
 }
 
 .how-kicker {
@@ -490,6 +911,37 @@ p {
   flex-wrap: wrap;
 }
 
+.home-page .welcome-copy .btn,
+.home-page .grid.cols-3 .card > .btn {
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home-page .welcome-copy .btn {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.home-page #how-it-works .how-cta-wrap .btn {
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home-page .champion-cta {
+  justify-content: center;
+}
+
+.home-page #how-it-works .how-head,
+.home-page .champion-head {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
 .stat {
   text-align: center;
 }
@@ -524,6 +976,620 @@ p {
   border-radius: 18px;
   padding: 34px 24px;
   text-align: center;
+}
+
+.home-final-cta {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-image: linear-gradient(130deg, rgba(14, 14, 14, 0.75), rgba(225, 6, 0, 0.6)), url("images/boxing-gloves-lying-empty-ring.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.home-final-cta .banner-kicker {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  font-size: 11px;
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
+  font-weight: 800;
+  background: rgba(0, 0, 0, 0.28);
+}
+
+.home-final-cta h2 {
+  max-width: 22ch;
+  margin: 0 auto;
+  color: #fff;
+}
+
+.home-final-cta .banner-lead {
+  max-width: 62ch;
+  margin: 14px auto 0;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: clamp(15px, 1.9vw, 18px);
+}
+
+.home-final-cta .banner-cta {
+  margin: 18px auto 0;
+  display: inline-block;
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+.process-final-cta {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-image: linear-gradient(135deg, rgba(12, 12, 12, 0.78), rgba(225, 6, 0, 0.5)), url("images/side-view-male-boxer-with-gloves-helmet.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.process-final-cta .banner-kicker {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: rgba(0, 0, 0, 0.35);
+  font-size: 11px;
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.process-final-cta h2 {
+  margin: 0 auto;
+  max-width: 24ch;
+  color: #fff;
+}
+
+.process-final-cta .banner-lead {
+  margin: 14px auto 0;
+  max-width: 64ch;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: clamp(15px, 1.8vw, 18px);
+}
+
+.process-final-actions {
+  justify-content: center;
+  margin-top: 22px;
+}
+
+.process-final-cta .banner-cta {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+.process-final-cta .banner-cta-secondary {
+  background: rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.55);
+  color: #fff;
+}
+
+.events-hero {
+  padding-bottom: 24px;
+}
+
+.events-page .events-hero .container {
+  text-align: center;
+  max-width: 900px;
+}
+
+.events-hero-lead {
+  margin: 12px auto 0;
+  max-width: 65ch;
+  color: #d9d9d9;
+  font-size: clamp(15px, 1.9vw, 18px);
+}
+
+.events-feature {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 22px;
+  align-items: stretch;
+}
+
+.events-feature-media {
+  min-height: 420px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background-image: linear-gradient(180deg, rgba(10, 10, 10, 0.22), rgba(10, 10, 10, 0.55)), url("images/gaiety-bar-southsea.webp");
+  background-size: cover;
+  background-position: center;
+}
+
+.gaiety-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 240px;
+  background-image: linear-gradient(180deg, rgba(8, 8, 8, 0.2), rgba(8, 8, 8, 0.72)), url("images/gaiety-bar-southsea.webp");
+  background-size: cover;
+  background-position: center;
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.gaiety-card h3,
+.gaiety-card p,
+.gaiety-card .btn {
+  position: relative;
+  z-index: 1;
+}
+
+.gaiety-card p {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.gaiety-card .btn {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+.event-venue-hero {
+  position: relative;
+  overflow: hidden;
+  background-image: linear-gradient(130deg, rgba(10, 10, 10, 0.78), rgba(10, 10, 10, 0.42)), url("images/gaiety-bar-southsea.webp");
+  background-size: cover;
+  background-position: center;
+}
+
+.event-venue-hero .container {
+  text-align: center;
+  padding-top: 56px;
+  padding-bottom: 56px;
+}
+
+.event-venue-hero p {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.events-feature-copy {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 24px;
+  background: linear-gradient(180deg, rgba(20, 20, 20, 0.96), rgba(12, 12, 12, 0.96));
+}
+
+.event-pill {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(225, 6, 0, 0.58);
+  background: rgba(225, 6, 0, 0.14);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.muted-pill {
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.events-meta {
+  margin-top: 8px;
+  color: #f0f0f0;
+  font-weight: 700;
+}
+
+.events-feature-copy ul {
+  margin: 14px 0 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 8px;
+  color: #e3e3e3;
+}
+
+.events-actions {
+  margin-top: 18px;
+  justify-content: flex-start;
+}
+
+.events-grid {
+  margin-top: 0;
+}
+
+.event-card-muted {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+  background: linear-gradient(180deg, rgba(20, 20, 20, 0.95), rgba(13, 13, 13, 0.95));
+}
+
+.event-card-muted .btn {
+  width: fit-content;
+  margin-top: 6px;
+}
+
+.events-banner {
+  background-image: linear-gradient(130deg, rgba(12, 12, 12, 0.8), rgba(225, 6, 0, 0.56)), url("images/hero-home.jpg");
+  background-size: cover;
+  background-position: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.events-banner .banner-lead {
+  margin: 12px auto 0;
+  max-width: 60ch;
+  color: rgba(255, 255, 255, 0.93);
+}
+
+.events-banner .banner-cta {
+  margin-top: 16px;
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+.tickets-hero {
+  padding-bottom: 24px;
+}
+
+.tickets-page .tickets-hero .container {
+  text-align: center;
+  max-width: 900px;
+}
+
+.tickets-hero-lead {
+  margin: 12px auto 0;
+  max-width: 64ch;
+  color: #d7d7d7;
+  font-size: clamp(15px, 1.9vw, 18px);
+}
+
+.tickets-layout {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+}
+
+.tickets-price-grid {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.tickets-price-card {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(20, 20, 20, 0.95), rgba(12, 12, 12, 0.95));
+  padding: 16px;
+}
+
+.tickets-option-icon {
+  width: 30px;
+  height: 30px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 999px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 800;
+  border: 1px solid rgba(225, 6, 0, 0.6);
+  background: rgba(225, 6, 0, 0.16);
+  color: #fff;
+}
+
+.tickets-option-priority .tickets-option-icon {
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.tickets-option-group .tickets-option-icon {
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(225, 6, 0, 0.2);
+}
+
+.tickets-price-card h3 {
+  margin: 2px 0 8px;
+  font-size: clamp(22px, 2.7vw, 30px);
+}
+
+.tickets-price-card p {
+  margin: 0;
+  color: #d7d7d7;
+}
+
+.tickets-event {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(20, 20, 20, 0.96), rgba(12, 12, 12, 0.96));
+}
+
+.tickets-event-media {
+  min-height: 260px;
+  background-image: linear-gradient(180deg, rgba(8, 8, 8, 0.2), rgba(8, 8, 8, 0.52)), url("images/gaiety-bar-southsea.webp");
+  background-size: cover;
+  background-position: center;
+}
+
+.tickets-event-body {
+  padding: 20px;
+}
+
+.tickets-meta {
+  margin: 10px 0 0;
+  color: #f0f0f0;
+  font-weight: 700;
+}
+
+.tickets-list {
+  margin: 14px 0 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 8px;
+  color: #e6e6e6;
+}
+
+.tickets-form {
+  border-radius: 16px;
+  padding: 22px;
+  background: linear-gradient(180deg, rgba(22, 22, 22, 0.96), rgba(14, 14, 14, 0.96));
+}
+
+.tickets-form h3 {
+  margin: 0;
+  font-size: clamp(28px, 3.4vw, 40px);
+}
+
+.tickets-form-lead {
+  margin: 8px 0 0;
+  color: #d3d3d3;
+}
+
+.tickets-form .btn.primary {
+  margin-top: 4px;
+}
+
+.tickets-note {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: #b9b9b9;
+}
+
+.tickets-trust {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  background: rgba(14, 14, 14, 0.86);
+  padding: 14px;
+  font-size: 13px;
+  color: #d6d6d6;
+}
+
+.tickets-trust strong {
+  color: #fff;
+}
+
+.about-page .about-hero .container {
+  max-width: 900px;
+  text-align: center;
+}
+
+.about-lead {
+  margin: 12px auto 0;
+  max-width: 66ch;
+  color: #d6d6d6;
+  font-size: clamp(15px, 1.9vw, 18px);
+}
+
+.founders-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.founder-card {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(20, 20, 20, 0.96), rgba(12, 12, 12, 0.96));
+}
+
+.founder-card-reverse {
+  grid-template-columns: 1.1fr 1fr;
+}
+
+.founder-image {
+  min-height: 340px;
+  background-size: cover;
+  background-position: center;
+}
+
+.founder-image-mikey {
+  background-image: linear-gradient(180deg, rgba(8, 8, 8, 0.2), rgba(8, 8, 8, 0.55)), url("images/Mckinson.avif");
+}
+
+.founder-image-lucas {
+  background-image: linear-gradient(180deg, rgba(8, 8, 8, 0.2), rgba(8, 8, 8, 0.55)), url("images/lucas-ballingall-boxing-in-the-ring.jpg");
+}
+
+.founder-body {
+  padding: 22px;
+  display: grid;
+  align-content: center;
+  gap: 10px;
+}
+
+.founder-body h2 {
+  font-size: clamp(30px, 4.3vw, 52px);
+}
+
+.founder-body p {
+  margin: 0;
+  color: #d7d7d7;
+}
+
+.about-values {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.about-values .card {
+  background: linear-gradient(180deg, rgba(20, 20, 20, 0.95), rgba(13, 13, 13, 0.95));
+}
+
+.faq-page .faq-hero .container {
+  max-width: 920px;
+  text-align: center;
+}
+
+.faq-lead {
+  margin: 12px auto 0;
+  max-width: 64ch;
+  color: #d7d7d7;
+  font-size: clamp(15px, 1.9vw, 18px);
+}
+
+.faq-wrap {
+  max-width: 940px;
+}
+
+.faq-list {
+  margin-top: 0;
+}
+
+.faq-banner {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-image: linear-gradient(130deg, rgba(12, 12, 12, 0.82), rgba(225, 6, 0, 0.54)), url("images/view-pair-boxing-gloves.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.faq-banner .banner-lead {
+  margin: 12px auto 0;
+  max-width: 60ch;
+  color: rgba(255, 255, 255, 0.93);
+}
+
+.faq-banner .banner-cta {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+.signup-hero {
+  padding-bottom: 24px;
+}
+
+.signup-page .signup-hero .container {
+  max-width: 900px;
+  text-align: center;
+}
+
+.signup-hero-lead {
+  margin: 12px auto 0;
+  max-width: 64ch;
+  color: #d7d7d7;
+  font-size: clamp(15px, 1.9vw, 18px);
+}
+
+.signup-layout {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+}
+
+.signup-benefits {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(20, 20, 20, 0.96), rgba(12, 12, 12, 0.96));
+}
+
+.signup-form {
+  height: 100%;
+}
+
+.signup-benefits-media {
+  min-height: 260px;
+  background-image: linear-gradient(180deg, rgba(8, 8, 8, 0.22), rgba(8, 8, 8, 0.55)), url("images/portsmouth-city.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.signup-benefits-body {
+  padding: 20px;
+}
+
+.signup-list {
+  margin: 14px 0 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 8px;
+  color: #e5e5e5;
+}
+
+.signup-meta-grid {
+  margin-top: 16px;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 1fr;
+  color: #d3d3d3;
+  font-size: 14px;
+}
+
+.signup-meta-grid strong {
+  color: #fff;
+}
+
+.signup-form {
+  border-radius: 16px;
+  padding: 22px;
+  background: linear-gradient(180deg, rgba(22, 22, 22, 0.96), rgba(14, 14, 14, 0.96));
+}
+
+.signup-form h3 {
+  margin: 0;
+  font-size: clamp(28px, 3.2vw, 40px);
+}
+
+.signup-form-lead {
+  margin: 8px 0 0;
+  color: #d2d2d2;
+}
+
+.signup-note {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: #b9b9b9;
+}
+
+.signup-trust {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  background: rgba(14, 14, 14, 0.86);
+  padding: 14px;
+  font-size: 13px;
+  color: #d6d6d6;
+}
+
+.signup-trust strong {
+  color: #fff;
 }
 
 .field,
@@ -612,16 +1678,218 @@ form {
 
 @media (max-width: 880px) {
   .grid.cols-3,
+  .grid.cols-4,
   .grid.cols-2,
   .split {
     grid-template-columns: 1fr;
   }
 
-  .nav-links {
+  .process-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .process-metric:nth-child(3) {
+    border-left: 0;
+  }
+
+  .process-split {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .process-image {
+    min-height: 280px;
+  }
+
+  .events-feature {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .tickets-layout {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .signup-layout {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .signup-benefits-media {
+    min-height: 220px;
+  }
+
+  .signup-form {
+    padding: 18px;
+  }
+
+  .signup-trust {
+    grid-template-columns: 1fr;
+  }
+
+  .tickets-price-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tickets-event-media {
+    min-height: 210px;
+  }
+
+  .tickets-form {
+    padding: 18px;
+  }
+
+  .tickets-trust {
+    grid-template-columns: 1fr;
+  }
+
+  .founder-card,
+  .founder-card-reverse {
+    grid-template-columns: 1fr;
+  }
+
+  .founder-image {
+    min-height: 260px;
+  }
+
+  .founder-body {
+    padding: 18px;
+  }
+
+  .about-values {
+    grid-template-columns: 1fr;
+  }
+
+  .events-feature-media {
+    min-height: 280px;
+  }
+
+  .events-feature-copy {
+    padding: 18px;
+  }
+
+  .events-actions {
+    justify-content: center;
+  }
+
+  .event-card-muted .btn {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .camp-row {
+    grid-template-columns: 1fr;
     gap: 10px;
-    font-size: 12px;
-    flex-wrap: wrap;
-    justify-content: flex-end;
+    padding: 16px 0;
+  }
+
+  .camp-content {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .camp-row:nth-child(even) .camp-media {
+    order: 0;
+  }
+
+  .camp-row:nth-child(even) .camp-copy {
+    padding-left: 0;
+  }
+
+  .camp-media {
+    min-height: 180px;
+    background-position: center;
+  }
+
+  .camp-row::before,
+  .camp-timeline::before {
+    display: none;
+  }
+
+  .camp-week {
+    font-size: 18px;
+  }
+
+  .camp-week {
+    font-size: 16px;
+  }
+
+  .camp-row h3 {
+    font-size: 28px;
+  }
+
+  .nav {
+    height: 64px;
+    min-height: 64px;
+    padding: 0;
+    flex-wrap: nowrap;
+    gap: 0;
+  }
+
+  .site-header .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+    position: relative;
+    z-index: 120;
+  }
+
+  .nav-links {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    z-index: 110;
+    min-height: 100dvh;
+    width: 100%;
+    padding: 108px 24px 36px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 14px;
+    text-align: center;
+    font-size: 15px;
+    background: linear-gradient(180deg, rgba(8, 8, 8, 0.99) 0%, rgba(8, 8, 8, 0.99) 100%);
+    backdrop-filter: blur(10px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  }
+
+  .site-header.menu-open .nav-links,
+  body.menu-open .site-header .nav-links {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .nav-links a {
+    width: auto;
+    padding: 6px 0;
+    border-bottom: 0;
+    font-family: Oswald, Impact, Arial Black, sans-serif;
+    font-size: clamp(28px, 8vw, 46px);
+    line-height: 1.05;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+
+  .nav-links a:last-child {
+    border-bottom: 0;
+  }
+
+  .site-header.menu-open .nav-toggle {
+    position: fixed;
+    top: 11px;
+    right: 16px;
   }
 
   .hero.hero-photo {
@@ -631,12 +1899,22 @@ form {
     padding: 72px 0 56px;
   }
 
+  .hero.hero-photo::before {
+    background: linear-gradient(180deg, rgba(8, 8, 8, 0.8) 0%, rgba(8, 8, 8, 0.6) 45%, rgba(8, 8, 8, 0.72) 100%);
+  }
+
   .hero.hero-photo .container {
     text-align: center;
   }
 
   .hero.hero-photo .cta-row {
     justify-content: center;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    padding: 20px 16px;
+    border-radius: 12px;
   }
 
   .impact-grid {
@@ -656,6 +1934,10 @@ form {
   }
 
   .video-tile {
+    min-height: 280px;
+  }
+
+  .video-embed {
     min-height: 280px;
   }
 
@@ -685,6 +1967,25 @@ form {
 
   .how-step h3 {
     font-size: 22px;
+  }
+
+  .how-page-hero {
+    padding: 18px;
+  }
+
+  .how-page-hero h1 {
+    font-size: clamp(34px, 10vw, 52px);
+  }
+
+  .process-final-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .process-final-cta .banner-cta,
+  .process-final-cta .banner-cta-secondary {
+    width: min(320px, 100%);
+    text-align: center;
   }
 
   .champion-grid {

@@ -7,11 +7,12 @@
     <meta name="description" content="Step into the ring for a purpose-driven UK charity boxing event. 8 weeks free training and live fight night." />
     <link rel="stylesheet" href="assets/styles.css" />
   </head>
-  <body>
+  <body class="home-page">
     <header class="site-header">
       <div class="container nav">
         <a href="index.html" class="logo">PUNCH <span>FOR PURPOSE</span></a>
-        <nav class="nav-links">
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+        <nav class="nav-links" id="site-nav">
           <a href="events.html">Events</a><a href="how-it-works.html">How It Works</a><a href="tickets.html">Tickets</a><a href="about.html">About</a><a href="faq.html">FAQ</a><a href="sign-up.html">Sign Up</a>
         </nav>
       </div>
@@ -19,17 +20,19 @@
 
     <section class="hero hero-photo">
       <div class="container">
-        <span class="badge">Limited spaces • UK fight nights</span>
-        <div class="hero-lines">
-          <p>Train Hard For A Real Cause.</p>
-          <p>Step Up For Your Community.</p>
-          <p>Own Fight Night In Portsmouth.</p>
-        </div>
-        <h1>Step Into The Ring. Fight For Purpose.</h1>
-        <p>Punch For Purpose is launching in Portsmouth. Be part of the first wave of fighters and help us build something powerful from day one.</p>
-        <div class="cta-row">
-          <a class="btn primary" href="sign-up.html">Sign Up Now</a>
-          <a class="btn" href="events.html">View Upcoming Events</a>
+        <div class="hero-content">
+          <span class="badge">Limited spaces • UK fight nights</span>
+          <div class="hero-lines">
+            <p>Train Hard For A Real Cause.</p>
+            <p>Step Up For Your Community.</p>
+            <p>Own Fight Night In Portsmouth.</p>
+          </div>
+          <h1 class="hero-title">Step Into The Ring. Fight For Purpose.</h1>
+          <p class="hero-lead">Punch For Purpose is launching in Portsmouth. Be part of the first wave of fighters and help us build something powerful from day one.</p>
+          <div class="cta-row">
+            <a class="btn primary" href="sign-up.html">Sign Up Now</a>
+            <a class="btn" href="events.html">View Upcoming Events</a>
+          </div>
         </div>
       </div>
     </section>
@@ -43,11 +46,10 @@
             <a class="btn primary" href="sign-up.html">Sign Up Today</a>
           </article>
           <article class="card welcome-media">
-            <div class="video-tile">
-              <span class="video-play">▶</span>
-              <strong>PFP</strong>
-              <small>LIKE NO OTHER EXPERIENCE</small>
-            </div>
+            <video class="video-embed" controls playsinline preload="metadata">
+              <source src="assets/videos/lucas-ballingall-training.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </article>
           <article class="card promo-card promo-fundraising">
             <div class="promo-overlay">
@@ -125,27 +127,7 @@
             <div class="champion-image-wrap">
               <img
                 class="champion-image"
-                src="https://images.unsplash.com/photo-1549476464-37392f717541?auto=format&fit=crop&w=1000&q=80"
-                alt="Mikey McKinson training session placeholder"
-              />
-              <span class="champion-tag">Head Technical Coach</span>
-            </div>
-            <div class="champion-body">
-              <h3>Mikey McKinson</h3>
-              <p>Sharp technical coaching focused on ring IQ, timing, and controlled composure under pressure.</p>
-              <ul>
-                <li>Technical pad-work and ring movement</li>
-                <li>Fight-week mindset and preparation</li>
-                <li>Bout strategy fundamentals for beginners</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="champion-card">
-            <div class="champion-image-wrap">
-              <img
-                class="champion-image"
-                src="https://images.unsplash.com/photo-1616279969856-759f316a5ac1?auto=format&fit=crop&w=1000&q=80"
+                src="assets/images/lucas-ballingall.jpg"
                 alt="Lucas Ballingall coaching session placeholder"
               />
               <span class="champion-tag">Performance Coach</span>
@@ -160,6 +142,26 @@
               </ul>
             </div>
           </article>
+
+          <article class="champion-card">
+            <div class="champion-image-wrap">
+              <img
+                class="champion-image"
+                src="assets/images/mikey-mckinson.jpg"
+                alt="Mikey McKinson training session placeholder"
+              />
+              <span class="champion-tag">Head Technical Coach</span>
+            </div>
+            <div class="champion-body">
+              <h3>Mikey McKinson</h3>
+              <p>Sharp technical coaching focused on ring IQ, timing, and controlled composure under pressure.</p>
+              <ul>
+                <li>Technical pad-work and ring movement</li>
+                <li>Fight-week mindset and preparation</li>
+                <li>Bout strategy fundamentals for beginners</li>
+              </ul>
+            </div>
+          </article>
         </div>
         <div class="champion-cta">
           <a class="btn primary" href="sign-up.html">Train With The Team</a>
@@ -171,11 +173,11 @@
     <section class="section">
       <div class="container">
         <h2>Upcoming Events</h2>
-        <p>We are currently operating in Portsmouth only. Limited spaces in the first event cohort.</p>
+        <p>Portsmouth is our live launch city. Spaces for the first fight-night cohort are limited and expected to fill quickly.</p>
         <div class="grid cols-3">
-          <article class="card"><h3>Punch For Purpose – Portsmouth Launch Night</h3><p>12 October 2026 • Portsmouth Guildhall (TBC)</p><a class="btn" href="event-portsmouth.html">Details</a></article>
-          <article class="card"><h3>South Coast Card #2</h3><p>Coming Soon • Date TBC</p><a class="btn" href="sign-up.html">Join Waitlist</a></article>
-          <article class="card"><h3>Future UK Cities</h3><p>Expansion planned after Portsmouth launch</p><a class="btn" href="sign-up.html">Register Interest</a></article>
+          <article class="card gaiety-card"><h3>Punch For Purpose — Portsmouth Launch Night</h3><p>4 July 2026 • Gaiety Bar, South Parade Pier</p><a class="btn" href="event-portsmouth.html">View Event Details</a></article>
+          <article class="card"><h3>South Coast Card #2</h3><p>Coming Soon • Date TBC</p><a class="btn" href="sign-up.html">Join Priority Waitlist</a></article>
+          <article class="card"><h3>Future UK Cities</h3><p>Regional expansion opens after Portsmouth launch results.</p><a class="btn" href="sign-up.html">Register City Interest</a></article>
         </div>
       </div>
     </section>
@@ -213,10 +215,11 @@
     </section>
 
     <section class="section">
-      <div class="container banner">
-        <h2>Are You Ready To Step Into The Ring?</h2>
-        <p style="color:#fff">Join the next event and fight for a cause.</p>
-        <a class="btn" style="background:#fff;color:#000;border-color:#fff" href="sign-up.html">Join The Next Event</a>
+      <div class="container banner home-final-cta">
+        <span class="banner-kicker">Limited Fighter Spaces</span>
+        <h2>Ready To Train, Fight, And Make Real Impact?</h2>
+        <p class="banner-lead">Secure your place in the next Portsmouth event and step into fight night with purpose, coaching, and full team support.</p>
+        <a class="btn banner-cta" href="sign-up.html">Apply For The Next Event</a>
       </div>
     </section>
 
@@ -225,8 +228,8 @@
         <div>© 2026 Punch For Purpose</div>
         <div class="mini-links">
           <a href="about.html">Contact</a>
-          <a href="faq.html">Terms & Conditions</a>
-          <a href="faq.html">Privacy Policy</a>
+          <a href="terms-and-conditions.html">Terms & Conditions</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
         </div>
       </div>
     </footer>
