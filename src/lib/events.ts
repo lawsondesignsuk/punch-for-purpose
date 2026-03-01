@@ -2,31 +2,6 @@ import { EventRecord } from "@/types/event";
 
 export const events: EventRecord[] = [
   {
-    id: "evt_manchester_oct_2026",
-    slug: "manchester-october-2026",
-    name: "Punch For Purpose – Manchester",
-    city: "Manchester",
-    dateISO: "2026-10-12T19:00:00.000Z",
-    venue: "AO Arena",
-    ticketsAvailable: true,
-    heroCopy: "A packed fight night built for first-time fighters, big charity impact, and unforgettable walkouts.",
-    charityPartner: "Mind UK",
-    faq: [
-      {
-        question: "Do I need boxing experience?",
-        answer: "No. Beginners are welcome and coached through every stage over 8 structured weeks.",
-      },
-      {
-        question: "Is it safe?",
-        answer: "Safety-first coaching, controlled sparring, medical screening, and on-site medical support are in place.",
-      },
-      {
-        question: "What if I cannot raise money?",
-        answer: "You will get support scripts, templates, and mentoring to help you hit your fundraising target.",
-      },
-    ],
-  },
-  {
     id: "evt_birmingham_nov_2026",
     slug: "birmingham-november-2026",
     name: "Punch For Purpose – Birmingham",
