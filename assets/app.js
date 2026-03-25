@@ -1,14 +1,3 @@
-document.querySelectorAll("form[data-static-form]").forEach((form) => {
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const isTicketsPage = document.body.classList.contains("tickets-page");
-    const message = isTicketsPage
-      ? "Thanks — your ticket request has been received. Secure checkout is enabled on the live site."
-      : "Thanks — your form has been received. Submission processing is enabled on the live site.";
-    alert(message);
-  });
-});
-
 const header = document.querySelector(".site-header");
 const navToggle = document.querySelector(".nav-toggle");
 const navLinks = document.querySelector(".nav-links");

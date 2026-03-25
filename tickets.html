@@ -86,29 +86,32 @@
           </div>
         </article>
 
-        <form data-static-form class="card tickets-form">
+        <form data-static-form class="card tickets-form" action="https://formsubmit.co/punchforpurpose1@gmail.com" method="POST">
           <h3>Secure Your Tickets</h3>
           <p class="tickets-form-lead">Complete your details below to continue to checkout.</p>
-          <select required>
+          <input type="hidden" name="_subject" value="New Ticket Request - Punch For Purpose" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
+          <select name="event" required>
             <option value="">Select Event</option>
             <option>Portsmouth Launch Night — 4 July 2026</option>
             <option>South Coast Card #2 (Priority Waitlist)</option>
           </select>
           <div class="split">
-            <select required>
+            <select name="ticketType" required>
               <option value="">Ticket Type</option>
               <option>General Admission</option>
               <option>Priority Seating</option>
             </select>
-            <input class="field" type="number" min="1" max="10" placeholder="Quantity" required />
+            <input class="field" name="quantity" type="number" min="1" max="10" placeholder="Quantity" required />
           </div>
           <div class="split">
-            <input class="field" placeholder="Full Name" required />
-            <input class="field" type="email" placeholder="Email" required />
+            <input class="field" name="fullName" placeholder="Full Name" required />
+            <input class="field" name="email" type="email" placeholder="Email" required />
           </div>
-          <input class="field" placeholder="Phone Number" required />
+          <input class="field" name="phone" placeholder="Phone Number" required />
           <button class="btn primary" type="submit">Continue To Secure Checkout</button>
-          <p class="tickets-note">Ticket checkout is secure. You will receive confirmation and event entry guidance by email.</p>
+          <p class="tickets-note">Ticket requests are sent to punchforpurpose1@gmail.com and confirmation is provided by email.</p>
         </form>
       </div>
     </section>
@@ -118,7 +121,7 @@
         <div class="tickets-trust">
           <div><strong>Venue:</strong> Gaiety Bar, South Parade Pier</div>
           <div><strong>Date:</strong> Saturday 4 July 2026</div>
-          <div><strong>Support:</strong> Contact team via sign-up page for ticket help</div>
+          <div><strong>Support:</strong> <a href="mailto:punchforpurpose1@gmail.com">punchforpurpose1@gmail.com</a></div>
         </div>
       </div>
     </section>
@@ -143,6 +146,7 @@
           <a href="sign-up.html">Sign Up</a>
           <a href="about.html">About</a>
           <a href="faq.html">FAQ</a>
+          <a href="mailto:punchforpurpose1@gmail.com">punchforpurpose1@gmail.com</a>
         </div>
         <div class="footer-col">
           <h3>Legal</h3>

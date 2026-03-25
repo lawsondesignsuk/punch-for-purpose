@@ -69,15 +69,18 @@
           </div>
         </article>
 
-        <form data-static-form class="card signup-form">
+        <form data-static-form class="card signup-form" action="https://formsubmit.co/punchforpurpose1@gmail.com" method="POST">
           <h3>Start Application</h3>
           <p class="signup-form-lead">Complete this form to secure your place in the next fighter intake and set your charity target.</p>
+          <input type="hidden" name="_subject" value="New Fighter Application - Punch For Purpose" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
           <div class="split"><input class="field" name="fullName" autocomplete="name" placeholder="Full Name" required/><input class="field" name="age" type="number" placeholder="Age" required/></div>
           <div class="split"><input class="field" name="email" type="email" autocomplete="email" placeholder="Email" required/><input class="field" name="phone" type="tel" autocomplete="tel" placeholder="Number" required/></div>
           <textarea name="medicalHistory" rows="3" placeholder="Medical history" required></textarea>
           <input class="field" name="fundraisingTarget" type="number" min="100" step="1" placeholder="Charity fundraising target (£100 minimum)" required/>
           <button class="btn primary" type="submit">Submit Application</button>
-          <p class="signup-note">Minimum fundraising target is £100. Applications are reviewed in intake order and confirmation is sent by email.</p>
+          <p class="signup-note">Minimum fundraising target is £100. Applications are reviewed in intake order and sent to punchforpurpose1@gmail.com.</p>
         </form>
       </div>
     </section>
@@ -110,6 +113,7 @@
           <a href="sign-up.html">Sign Up</a>
           <a href="about.html">About</a>
           <a href="faq.html">FAQ</a>
+          <a href="mailto:punchforpurpose1@gmail.com">punchforpurpose1@gmail.com</a>
         </div>
         <div class="footer-col">
           <h3>Legal</h3>

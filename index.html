@@ -328,6 +328,7 @@
           <a href="sign-up.html">Sign Up</a>
           <a href="about.html">About</a>
           <a href="faq.html">FAQ</a>
+          <a href="mailto:punchforpurpose1@gmail.com">punchforpurpose1@gmail.com</a>
         </div>
         <div class="footer-col">
           <h3>Legal</h3>
@@ -344,17 +345,6 @@
   </div>
 </footer>
     <script>
-      document.querySelectorAll("form[data-static-form]").forEach((form) => {
-        form.addEventListener("submit", (event) => {
-          event.preventDefault();
-          const isTicketsPage = document.body.classList.contains("tickets-page");
-          const message = isTicketsPage
-            ? "Thanks — your ticket request has been received. Secure checkout is enabled on the live site."
-            : "Thanks — your form has been received. Submission processing is enabled on the live site.";
-          alert(message);
-        });
-      });
-
       const header = document.querySelector(".site-header");
       const navToggle = document.querySelector(".nav-toggle");
       const navLinks = document.querySelector(".nav-links");
