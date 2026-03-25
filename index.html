@@ -9,8 +9,8 @@
     <meta name="author" content="Punch For Purpose" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="theme-color" content="#0d0d0d" />
-    <link rel="canonical" href="/" />
-    <link rel="preload" as="image" href="/assets/images/hero-home.webp" fetchpriority="high" />
+    <link rel="canonical" href="https://punchforpurposeboxing.com/" />
+    <link rel="preload" as="image" href="assets/images/hero-home.webp" fetchpriority="high" />
     <link rel="icon" type="image/webp" href="/assets/images/logo.webp" />
     <link rel="apple-touch-icon" href="/assets/images/logo.webp" />
     <meta property="og:type" content="website" />
@@ -18,7 +18,7 @@
     <meta property="og:locale" content="en_GB" />
     <meta property="og:title" content="Punch For Purpose | Charity Boxing Event UK" />
     <meta property="og:description" content="Step into the ring for a purpose-driven UK charity boxing event. 8 weeks free training and live fight night." />
-    <meta property="og:url" content="/index.html" />
+    <meta property="og:url" content="https://punchforpurposeboxing.com/" />
     <meta property="og:image" content="/assets/images/logo.webp" />
     <meta property="og:image:alt" content="Punch For Purpose logo" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -30,7 +30,7 @@
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "Punch For Purpose",
-        "url": "/",
+        "url": "https://punchforpurposeboxing.com/",
         "logo": "/assets/images/logo.webp"
       }
     </script>
@@ -40,10 +40,42 @@
         "@type": "WebPage",
         "name": "Punch For Purpose | Charity Boxing Event UK",
         "description": "Step into the ring for a purpose-driven UK charity boxing event. 8 weeks free training and live fight night.",
-        "url": "/"
+        "url": "https://punchforpurposeboxing.com/"
       }
     </script>
-    <link rel="stylesheet" href="assets/styles.css" />
+    <style>
+      .hero.hero-photo {
+        min-height: 78vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.55) 44%, rgba(0, 0, 0, 0.52) 100%),
+          url("assets/images/hero-home.webp");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .hero.hero-photo::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, rgba(8, 8, 8, 0.84) 0%, rgba(8, 8, 8, 0.42) 55%, rgba(8, 8, 8, 0.2) 100%);
+      }
+
+      .hero.hero-photo .container {
+        position: relative;
+        z-index: 1;
+        text-align: left;
+      }
+
+      .hero.hero-photo .cta-row {
+        justify-content: flex-start;
+      }
+    </style>
+    <link rel="preload" href="assets/styles.css" as="style" />
+    <link rel="stylesheet" href="assets/styles.css" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="assets/styles.css" /></noscript>
   </head>
   <body class="home-page">
     <header class="site-header">
@@ -55,6 +87,8 @@
         </nav>
       </div>
     </header>
+
+    <main id="main-content">
 
     <section class="hero hero-photo">
       <div class="container">
@@ -84,7 +118,7 @@
             <a class="btn primary" href="sign-up.html">Sign Up Today</a>
           </article>
           <article class="card welcome-media">
-            <video class="video-embed" controls playsinline preload="metadata">
+            <video class="video-embed" controls playsinline preload="none" poster="assets/images/lucas-ballingall-training-poster.webp">
               <source src="assets/videos/lucas-ballingall-training.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
@@ -166,6 +200,8 @@
               <img
                 class="champion-image"
                 src="assets/images/lucas-ballingall.webp"
+                srcset="assets/images/lucas-ballingall-436.webp 436w, assets/images/lucas-ballingall.webp 605w"
+                sizes="(max-width: 880px) 100vw, 436px"
                 alt="Lucas Ballingall coaching session placeholder"
                 loading="lazy"
                 decoding="async"
@@ -269,6 +305,8 @@
       </div>
     </section>
 
+    </main>
+
     <footer class="site-footer">
   <div class="container">
     <div class="footer-main">
@@ -303,6 +341,94 @@
     </div>
   </div>
 </footer>
-    <script src="assets/app.js"></script>
+    <script>
+      document.querySelectorAll("form[data-static-form]").forEach((form) => {
+        form.addEventListener("submit", (event) => {
+          event.preventDefault();
+          const isTicketsPage = document.body.classList.contains("tickets-page");
+          const message = isTicketsPage
+            ? "Thanks — your ticket request has been received. Secure checkout is enabled on the live site."
+            : "Thanks — your form has been received. Submission processing is enabled on the live site.";
+          alert(message);
+        });
+      });
+
+      const header = document.querySelector(".site-header");
+      const navToggle = document.querySelector(".nav-toggle");
+      const navLinks = document.querySelector(".nav-links");
+
+      if (header && navToggle && navLinks) {
+        const setMenuState = (isOpen) => {
+          const currentlyOpen = header.classList.contains("menu-open");
+          if (currentlyOpen === isOpen) {
+            return;
+          }
+
+          header.classList.toggle("menu-open", isOpen);
+          document.body.classList.toggle("menu-open", isOpen);
+          navToggle.setAttribute("aria-expanded", String(isOpen));
+          navToggle.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+        };
+
+        const closeMenu = () => {
+          setMenuState(false);
+        };
+
+        navToggle.addEventListener("click", () => {
+          setMenuState(!header.classList.contains("menu-open"));
+        });
+
+        navLinks.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            closeMenu();
+          });
+        });
+
+        navLinks.addEventListener("click", (event) => {
+          if (event.target === navLinks) {
+            closeMenu();
+          }
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") {
+            closeMenu();
+          }
+        });
+
+        const desktopQuery = window.matchMedia("(min-width: 881px)");
+        const handleDesktopChange = (event) => {
+          if (event.matches) {
+            closeMenu();
+          }
+        };
+
+        if (typeof desktopQuery.addEventListener === "function") {
+          desktopQuery.addEventListener("change", handleDesktopChange);
+        } else if (typeof desktopQuery.addListener === "function") {
+          desktopQuery.addListener(handleDesktopChange);
+        }
+      }
+
+      const timer = document.querySelector("[data-countdown]");
+      if (timer) {
+        const target = new Date(timer.getAttribute("data-countdown")).getTime();
+        const update = () => {
+          const diff = Math.max(0, target - Date.now());
+          const values = {
+            days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+            hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+            minutes: Math.floor((diff / (1000 * 60)) % 60),
+            seconds: Math.floor((diff / 1000) % 60),
+          };
+          Object.entries(values).forEach(([k, v]) => {
+            const el = document.querySelector(`[data-time="${k}"]`);
+            if (el) el.textContent = String(v).padStart(2, "0");
+          });
+        };
+        update();
+        setInterval(update, 1000);
+      }
+    </script>
   </body>
   </html>

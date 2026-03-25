@@ -14,18 +14,24 @@ const navToggle = document.querySelector(".nav-toggle");
 const navLinks = document.querySelector(".nav-links");
 
 if (header && navToggle && navLinks) {
-  const closeMenu = () => {
-    header.classList.remove("menu-open");
-    document.body.classList.remove("menu-open");
-    navToggle.setAttribute("aria-expanded", "false");
-    navToggle.setAttribute("aria-label", "Open navigation");
-  };
+  const setMenuState = (isOpen) => {
+    const currentlyOpen = header.classList.contains("menu-open");
+    if (currentlyOpen === isOpen) {
+      return;
+    }
 
-  navToggle.addEventListener("click", () => {
-    const isOpen = header.classList.toggle("menu-open");
+    header.classList.toggle("menu-open", isOpen);
     document.body.classList.toggle("menu-open", isOpen);
     navToggle.setAttribute("aria-expanded", String(isOpen));
     navToggle.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+  };
+
+  const closeMenu = () => {
+    setMenuState(false);
+  };
+
+  navToggle.addEventListener("click", () => {
+    setMenuState(!header.classList.contains("menu-open"));
   });
 
   navLinks.querySelectorAll("a").forEach((link) => {
@@ -46,11 +52,18 @@ if (header && navToggle && navLinks) {
     }
   });
 
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 880) {
+  const desktopQuery = window.matchMedia("(min-width: 881px)");
+  const handleDesktopChange = (event) => {
+    if (event.matches) {
       closeMenu();
     }
-  });
+  };
+
+  if (typeof desktopQuery.addEventListener === "function") {
+    desktopQuery.addEventListener("change", handleDesktopChange);
+  } else if (typeof desktopQuery.addListener === "function") {
+    desktopQuery.addListener(handleDesktopChange);
+  }
 }
 
 const timer = document.querySelector("[data-countdown]");

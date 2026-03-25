@@ -9,7 +9,7 @@
     <meta name="author" content="Punch For Purpose" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="theme-color" content="#0d0d0d" />
-    <link rel="canonical" href="/event-portsmouth.html" />
+    <link rel="canonical" href="https://punchforpurposeboxing.com/event-portsmouth.html" />
     <link rel="icon" type="image/webp" href="/assets/images/logo.webp" />
     <link rel="apple-touch-icon" href="/assets/images/logo.webp" />
     <meta property="og:type" content="website" />
@@ -17,7 +17,7 @@
     <meta property="og:locale" content="en_GB" />
     <meta property="og:title" content="Portsmouth Launch Event | Punch For Purpose" />
     <meta property="og:description" content="View full details for the Punch For Purpose Portsmouth launch fight night on 4 July 2026 at Gaiety Bar." />
-    <meta property="og:url" content="/event-portsmouth.html" />
+    <meta property="og:url" content="https://punchforpurposeboxing.com/event-portsmouth.html" />
     <meta property="og:image" content="/assets/images/logo.webp" />
     <meta property="og:image:alt" content="Punch For Purpose logo" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -29,14 +29,17 @@
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "Punch For Purpose",
-        "url": "/",
+        "url": "https://punchforpurposeboxing.com/",
         "logo": "/assets/images/logo.webp"
       }
     </script>
-    <link rel="stylesheet" href="assets/styles.css" />
+    <link rel="preload" href="assets/styles.css" as="style" />
+    <link rel="stylesheet" href="assets/styles.css" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="assets/styles.css" /></noscript>
   </head>
   <body>
     <header class="site-header"><div class="container nav"><a href="index.html" class="logo">PUNCH <span>FOR PURPOSE</span></a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation"><span></span><span></span><span></span></button><nav class="nav-links" id="site-nav"><a href="events.html">Events</a><a href="how-it-works.html">How It Works</a><a href="tickets.html">Tickets</a><a href="about.html">About</a><a href="faq.html">FAQ</a><a href="sign-up.html">Sign Up</a></nav></div></header>
+    <main id="main-content">
     <section class="section event-venue-hero"><div class="container"><h1>Punch For Purpose – Portsmouth Launch Night</h1><p>4 July 2026 • Gaiety Bar, South Parade Pier</p></div></section>
     <section class="section"><div class="container split">
       <article class="card"><h2>Countdown</h2><div class="countdown" data-countdown="2026-07-04T19:00:00.000Z">
@@ -51,6 +54,7 @@
       <article class="card"><h2>FAQs</h2><p><strong>Do I need experience?</strong><br/>No, beginners are welcome.</p><p><strong>Has money been raised yet?</strong><br/>Not yet — this is the first event cycle, and fundraising starts with this intake.</p></article>
       <article class="card"><h2>Charity Partner</h2><p>Partner announcement coming soon.</p></article>
     </div></section>
+    </main>
     <footer class="site-footer">
   <div class="container">
     <div class="footer-main">
@@ -85,6 +89,6 @@
     </div>
   </div>
 </footer>
-    <script src="assets/app.js"></script>
+    <script src="assets/app.js" defer></script>
   </body>
   </html>
