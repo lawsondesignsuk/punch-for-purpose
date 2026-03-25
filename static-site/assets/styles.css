@@ -994,11 +994,6 @@ p {
   text-align: center;
 }
 
-.home-page main > .section:not(.welcome-overlap):not(:first-of-type) {
-  content-visibility: auto;
-  contain-intrinsic-size: 900px;
-}
-
 .stat {
   text-align: center;
 }
