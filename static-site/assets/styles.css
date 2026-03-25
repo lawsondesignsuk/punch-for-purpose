@@ -4,6 +4,15 @@
   --text: #ffffff;
   --muted: #b9b9b9;
   --accent: #e10600;
+  --container: 1160px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --space-1: 8px;
+  --space-2: 12px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
 }
 
 * {
@@ -14,30 +23,47 @@ html,
 body {
   margin: 0;
   padding: 0;
+  min-height: 100%;
   background: radial-gradient(circle at top, #1a1a1a 0%, #0d0d0d 45%);
   color: var(--text);
   font-family: Inter, Arial, sans-serif;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 .container {
   width: 100%;
-  max-width: 1120px;
+  max-width: var(--container);
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0 clamp(16px, 2.6vw, 28px);
+}
+
+.container.container-narrow {
+  max-width: 900px;
 }
 
 .site-header {
   position: sticky;
   top: 0;
   z-index: 300;
-  background: rgba(13, 13, 13, 0.96);
+  background: rgba(13, 13, 13, 0.94);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(8px);
 }
 
@@ -51,7 +77,7 @@ body.menu-open {
 }
 
 .nav {
-  height: 64px;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -69,9 +95,18 @@ body.menu-open {
 
 .nav-links {
   display: flex;
-  gap: 18px;
+  gap: 22px;
   font-size: 14px;
   font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.nav-links a {
+  color: rgba(255, 255, 255, 0.84);
+}
+
+.nav-links a:hover {
+  color: #fff;
 }
 
 .nav-toggle {
@@ -108,7 +143,7 @@ body.menu-open {
 }
 
 .hero {
-  padding: 90px 0 70px;
+  padding: clamp(72px, 9vw, 108px) 0 clamp(56px, 7vw, 84px);
   text-align: center;
 }
 
@@ -119,7 +154,7 @@ body.menu-open {
   position: relative;
   overflow: hidden;
   background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.55) 44%, rgba(0, 0, 0, 0.52) 100%),
-    url("images/hero-home.jpg");
+    url("images/hero-home.webp");
   background-size: cover;
   background-position: center;
 }
@@ -143,10 +178,11 @@ body.menu-open {
 
 .hero-content {
   max-width: 760px;
-  padding: 24px;
+  padding: clamp(20px, 2.8vw, 30px);
   border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-md);
   background: linear-gradient(145deg, rgba(14, 14, 14, 0.62), rgba(14, 14, 14, 0.24));
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(3px);
 }
 
 .hero-lines {
@@ -206,39 +242,53 @@ h2 {
 
 p {
   color: var(--muted);
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .cta-row {
   margin-top: 24px;
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 14px;
   flex-wrap: wrap;
 }
 
+.cta-row.align-start {
+  justify-content: flex-start;
+}
+
 .btn {
-  display: inline-block;
-  padding: 13px 18px;
-  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
   border: 1px solid rgba(255, 255, 255, 0.2);
   font-size: 13px;
   font-weight: 900;
   letter-spacing: 0.5px;
   text-transform: uppercase;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.24);
 }
 
 .btn.primary {
   background: var(--accent);
   border-color: var(--accent);
+  box-shadow: 0 8px 18px rgba(225, 6, 0, 0.24);
 }
 
 .section {
-  padding: 56px 0;
+  padding: clamp(52px, 6.5vw, 84px) 0;
 }
 
 .section.tight {
-  padding: 36px 0;
+  padding: clamp(32px, 4.8vw, 56px) 0;
 }
 
 .section.alt {
@@ -250,7 +300,7 @@ p {
 .grid {
   margin-top: 22px;
   display: grid;
-  gap: 16px;
+  gap: 20px;
 }
 
 .grid.cols-3 {
@@ -268,8 +318,9 @@ p {
 .card {
   background: var(--panel);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 14px;
-  padding: 18px;
+  border-radius: var(--radius-md);
+  padding: clamp(16px, 2.2vw, 24px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
 }
 
 .welcome-overlap {
@@ -401,19 +452,19 @@ p {
 .promo-fundraising {
   grid-area: fundraising;
   min-height: 430px;
-  background-image: url("images/walking-to-the-ring.jpg");
+  background-image: url("images/walking-to-the-ring.webp");
 }
 
 .promo-training {
   grid-area: training;
   min-height: 215px;
-  background-image: url("images/view-pair-boxing-gloves.jpg");
+  background-image: url("images/view-pair-boxing-gloves.webp");
 }
 
 .promo-locations {
   grid-area: locations;
   min-height: 215px;
-  background-image: url("images/portsmouth-city.jpg");
+  background-image: url("images/portsmouth-city.webp");
 }
 
 .how-head {
@@ -427,7 +478,7 @@ p {
   padding: 28px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 14px;
-  background-image: linear-gradient(120deg, rgba(10, 10, 10, 0.88), rgba(10, 10, 10, 0.56)), url("images/sporty-man-boxing-photo-boxer-ring-strength-motivation.jpg");
+  background-image: linear-gradient(120deg, rgba(10, 10, 10, 0.88), rgba(10, 10, 10, 0.56)), url("images/sporty-man-boxing-photo-boxer-ring-strength-motivation.webp");
   background-size: cover;
   background-position: center;
   position: relative;
@@ -507,7 +558,7 @@ p {
 }
 
 .process-image-training {
-  background-image: linear-gradient(180deg, rgba(8, 8, 8, 0.15), rgba(8, 8, 8, 0.6)), url("images/lucas-and-mikey-together.jpg");
+  background-image: linear-gradient(180deg, rgba(8, 8, 8, 0.15), rgba(8, 8, 8, 0.6)), url("images/lucas-and-mikey-together.webp");
   background-position: top center;
 }
 
@@ -649,19 +700,19 @@ p {
 }
 
 .camp-media-foundations {
-  background-image: linear-gradient(180deg, rgba(8, 8, 8, 0.2), rgba(8, 8, 8, 0.45)), url("images/boxing-gloves-lying-empty-ring.jpg");
+  background-image: linear-gradient(180deg, rgba(8, 8, 8, 0.2), rgba(8, 8, 8, 0.45)), url("images/boxing-gloves-lying-empty-ring.webp");
 }
 
 .camp-media-technique {
-  background-image: linear-gradient(180deg, rgba(8, 8, 8, 0.2), rgba(8, 8, 8, 0.45)), url("images/pair-gloves-boxing-sport.jpg");
+  background-image: linear-gradient(180deg, rgba(8, 8, 8, 0.2), rgba(8, 8, 8, 0.45)), url("images/pair-gloves-boxing-sport.webp");
 }
 
 .camp-media-sparring {
-  background-image: linear-gradient(180deg, rgba(8, 8, 8, 0.2), rgba(8, 8, 8, 0.45)), url("images/side-view-male-boxer-sparring.jpg");
+  background-image: linear-gradient(180deg, rgba(8, 8, 8, 0.2), rgba(8, 8, 8, 0.45)), url("images/side-view-male-boxer-sparring.webp");
 }
 
 .camp-media-prep {
-  background-image: linear-gradient(180deg, rgba(8, 8, 8, 0.2), rgba(8, 8, 8, 0.45)), url("images/walking-to-the-ring.jpg");
+  background-image: linear-gradient(180deg, rgba(8, 8, 8, 0.2), rgba(8, 8, 8, 0.45)), url("images/walking-to-the-ring.webp");
 }
 
 .camp-week {
@@ -982,7 +1033,7 @@ p {
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  background-image: linear-gradient(130deg, rgba(14, 14, 14, 0.75), rgba(225, 6, 0, 0.6)), url("images/boxing-gloves-lying-empty-ring.jpg");
+  background-image: linear-gradient(130deg, rgba(14, 14, 14, 0.75), rgba(225, 6, 0, 0.6)), url("images/boxing-gloves-lying-empty-ring.webp");
   background-size: cover;
   background-position: center;
 }
@@ -1025,7 +1076,7 @@ p {
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  background-image: linear-gradient(135deg, rgba(12, 12, 12, 0.78), rgba(225, 6, 0, 0.5)), url("images/side-view-male-boxer-with-gloves-helmet.jpg");
+  background-image: linear-gradient(135deg, rgba(12, 12, 12, 0.78), rgba(225, 6, 0, 0.5)), url("images/side-view-male-boxer-with-gloves-helmet.webp");
   background-size: cover;
   background-position: center;
 }
@@ -1211,7 +1262,7 @@ p {
 }
 
 .events-banner {
-  background-image: linear-gradient(130deg, rgba(12, 12, 12, 0.8), rgba(225, 6, 0, 0.56)), url("images/hero-home.jpg");
+  background-image: linear-gradient(130deg, rgba(12, 12, 12, 0.8), rgba(225, 6, 0, 0.56)), url("images/hero-home.webp");
   background-size: cover;
   background-position: center;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -1413,11 +1464,11 @@ p {
 }
 
 .founder-image-mikey {
-  background-image: linear-gradient(180deg, rgba(8, 8, 8, 0.2), rgba(8, 8, 8, 0.55)), url("images/Mckinson.avif");
+  background-image: linear-gradient(180deg, rgba(8, 8, 8, 0.2), rgba(8, 8, 8, 0.55)), url("images/Mckinson.webp");
 }
 
 .founder-image-lucas {
-  background-image: linear-gradient(180deg, rgba(8, 8, 8, 0.2), rgba(8, 8, 8, 0.55)), url("images/lucas-ballingall-boxing-in-the-ring.jpg");
+  background-image: linear-gradient(180deg, rgba(8, 8, 8, 0.2), rgba(8, 8, 8, 0.55)), url("images/lucas-ballingall-boxing-in-the-ring.webp");
 }
 
 .founder-body {
@@ -1468,7 +1519,7 @@ p {
 
 .faq-banner {
   border: 1px solid rgba(255, 255, 255, 0.2);
-  background-image: linear-gradient(130deg, rgba(12, 12, 12, 0.82), rgba(225, 6, 0, 0.54)), url("images/view-pair-boxing-gloves.jpg");
+  background-image: linear-gradient(130deg, rgba(12, 12, 12, 0.82), rgba(225, 6, 0, 0.54)), url("images/view-pair-boxing-gloves.webp");
   background-size: cover;
   background-position: center;
 }
@@ -1524,7 +1575,7 @@ p {
 
 .signup-benefits-media {
   min-height: 260px;
-  background-image: linear-gradient(180deg, rgba(8, 8, 8, 0.22), rgba(8, 8, 8, 0.55)), url("images/portsmouth-city.jpg");
+  background-image: linear-gradient(180deg, rgba(8, 8, 8, 0.22), rgba(8, 8, 8, 0.55)), url("images/portsmouth-city.webp");
   background-size: cover;
   background-position: center;
 }
@@ -1596,21 +1647,34 @@ p {
 select,
 textarea {
   width: 100%;
-  padding: 12px;
-  border-radius: 8px;
+  min-height: 46px;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
   border: 1px solid rgba(255, 255, 255, 0.2);
   background: #0f0f0f;
   color: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+.btn:focus-visible,
+.nav-toggle:focus-visible,
+a:focus-visible {
+  outline: none;
+  border-color: rgba(225, 6, 0, 0.8);
+  box-shadow: 0 0 0 3px rgba(225, 6, 0, 0.2);
 }
 
 form {
   display: grid;
-  gap: 12px;
+  gap: 14px;
 }
 
 .split {
   display: grid;
-  gap: 12px;
+  gap: 14px;
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
@@ -1635,8 +1699,8 @@ form {
 
 .site-footer {
   position: relative;
-  margin-top: 64px;
-  padding: 40px 0 0;
+  margin-top: clamp(52px, 7vw, 88px);
+  padding: clamp(28px, 4vw, 48px) 0 0;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   background: linear-gradient(180deg, rgba(16, 16, 16, 0.96) 0%, rgba(8, 8, 8, 0.99) 100%);
   font-size: 14px;
@@ -1661,11 +1725,11 @@ form {
 .footer-main {
   display: grid;
   grid-template-columns: minmax(240px, 1.1fr) minmax(0, 2fr);
-  gap: 34px;
+  gap: clamp(22px, 3vw, 36px);
   align-items: start;
-  padding: 30px;
+  padding: clamp(20px, 3vw, 32px);
   border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 18px;
+  border-radius: var(--radius-lg);
   background: linear-gradient(165deg, rgba(255, 255, 255, 0.045) 0%, rgba(255, 255, 255, 0.012) 100%);
 }
 
@@ -1787,6 +1851,10 @@ form {
   display: grid;
   gap: 12px;
   grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.partners-spaced {
+  margin-top: 16px;
 }
 
 .partner {

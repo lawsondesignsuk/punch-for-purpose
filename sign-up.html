@@ -6,21 +6,33 @@
     <title>Sign Up | Punch For Purpose</title>
     <meta name="description" content="Apply to join the next Punch For Purpose fighter intake and begin your 8-week charity boxing journey." />
     <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Punch For Purpose" />
+    <meta name="format-detection" content="telephone=no" />
     <meta name="theme-color" content="#0d0d0d" />
     <link rel="canonical" href="/sign-up.html" />
-    <link rel="icon" type="image/jpeg" href="/assets/images/logo.jpg" />
-    <link rel="apple-touch-icon" href="/assets/images/logo.jpg" />
+    <link rel="icon" type="image/webp" href="/assets/images/logo.webp" />
+    <link rel="apple-touch-icon" href="/assets/images/logo.webp" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Punch For Purpose" />
+    <meta property="og:locale" content="en_GB" />
     <meta property="og:title" content="Sign Up | Punch For Purpose" />
     <meta property="og:description" content="Apply to join the next Punch For Purpose fighter intake and begin your 8-week charity boxing journey." />
     <meta property="og:url" content="/sign-up.html" />
-    <meta property="og:image" content="/assets/images/logo.jpg" />
+    <meta property="og:image" content="/assets/images/logo.webp" />
     <meta property="og:image:alt" content="Punch For Purpose logo" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Sign Up | Punch For Purpose" />
     <meta name="twitter:description" content="Apply to join the next Punch For Purpose fighter intake and begin your 8-week charity boxing journey." />
-    <meta name="twitter:image" content="/assets/images/logo.jpg" />
+    <meta name="twitter:image" content="/assets/images/logo.webp" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Punch For Purpose",
+        "url": "/",
+        "logo": "/assets/images/logo.webp"
+      }
+    </script>
     <link rel="stylesheet" href="assets/styles.css" />
   </head>
   <body class="signup-page">
@@ -56,19 +68,13 @@
 
         <form data-static-form class="card signup-form">
           <h3>Start Application</h3>
-          <p class="signup-form-lead">Complete this form to secure your place in the next fighter intake.</p>
-          <div class="split"><input class="field" placeholder="Full Name" required/><input class="field" type="email" placeholder="Email" required/></div>
-          <div class="split"><input class="field" placeholder="Phone" required/><input class="field" placeholder="City" required/></div>
-          <select required>
-            <option value="">Select Preferred Event</option>
-            <option>Portsmouth Launch Night — 4 July 2026</option>
-            <option>South Coast Card #2 (Priority Waitlist)</option>
-          </select>
-          <input class="field" placeholder="Current fitness or training experience" required/>
-          <textarea rows="3" placeholder="Why do you want to join Punch For Purpose?" required></textarea>
-          <input class="field" placeholder="Emergency contact name & phone" required/>
-          <button class="btn primary" type="submit">Pay £50 & Continue</button>
-          <p class="signup-note">Applications are reviewed in intake order. You will receive confirmation and next-step guidance by email.</p>
+          <p class="signup-form-lead">Complete this form to secure your place in the next fighter intake and set your charity target.</p>
+          <div class="split"><input class="field" name="fullName" autocomplete="name" placeholder="Full Name" required/><input class="field" name="age" type="number" placeholder="Age" required/></div>
+          <div class="split"><input class="field" name="email" type="email" autocomplete="email" placeholder="Email" required/><input class="field" name="phone" type="tel" autocomplete="tel" placeholder="Number" required/></div>
+          <textarea name="medicalHistory" rows="3" placeholder="Medical history" required></textarea>
+          <input class="field" name="fundraisingTarget" type="number" min="100" step="1" placeholder="Charity fundraising target (£100 minimum)" required/>
+          <button class="btn primary" type="submit">Submit Application</button>
+          <p class="signup-note">Minimum fundraising target is £100. Applications are reviewed in intake order and confirmation is sent by email.</p>
         </form>
       </div>
     </section>
