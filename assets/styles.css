@@ -4,10 +4,10 @@
   --text: #ffffff;
   --muted: #b9b9b9;
   --accent: #e10600;
-  --container: 1160px;
+  --container: 1200px;
   --radius-sm: 10px;
-  --radius-md: 14px;
-  --radius-lg: 18px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
   --space-1: 8px;
   --space-2: 12px;
   --space-3: 16px;
@@ -27,7 +27,7 @@ body {
   background: radial-gradient(circle at top, #1a1a1a 0%, #0d0d0d 45%);
   color: var(--text);
   font-family: Inter, Arial, sans-serif;
-  line-height: 1.5;
+  line-height: 1.6;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
@@ -50,7 +50,7 @@ a {
   width: 100%;
   max-width: var(--container);
   margin: 0 auto;
-  padding: 0 clamp(16px, 2.6vw, 28px);
+  padding: 0 clamp(18px, 2.8vw, 34px);
 }
 
 .container.container-narrow {
@@ -168,9 +168,9 @@ body.menu-open {
   position: relative;
   overflow: hidden;
   background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.55) 44%, rgba(0, 0, 0, 0.52) 100%),
-    url("images/hero-home.webp");
+    url("images/fight-ready-shot.webp");
   background-size: cover;
-  background-position: center;
+  background-position: 72% center;
 }
 
 .hero.hero-photo::before {
@@ -191,12 +191,13 @@ body.menu-open {
 }
 
 .hero-content {
-  max-width: 760px;
-  padding: clamp(20px, 2.8vw, 30px);
+  max-width: 780px;
+  padding: clamp(22px, 3vw, 34px);
   border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: var(--radius-md);
-  background: linear-gradient(145deg, rgba(14, 14, 14, 0.62), rgba(14, 14, 14, 0.24));
+  border-radius: var(--radius-lg);
+  background: linear-gradient(145deg, rgba(14, 14, 14, 0.68), rgba(14, 14, 14, 0.28));
   backdrop-filter: blur(3px);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.32);
 }
 
 .hero-lines {
@@ -260,10 +261,10 @@ p {
 }
 
 .cta-row {
-  margin-top: 24px;
+  margin-top: 28px;
   display: flex;
   justify-content: center;
-  gap: 14px;
+  gap: 16px;
   flex-wrap: wrap;
 }
 
@@ -275,11 +276,11 @@ p {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 44px;
-  padding: 12px 20px;
+  min-height: 46px;
+  padding: 12px 22px;
   border-radius: var(--radius-sm);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 900;
   letter-spacing: 0.5px;
   text-transform: uppercase;
@@ -299,11 +300,11 @@ p {
 }
 
 .section {
-  padding: clamp(52px, 6.5vw, 84px) 0;
+  padding: clamp(62px, 7.4vw, 104px) 0;
 }
 
 .section.tight {
-  padding: clamp(32px, 4.8vw, 56px) 0;
+  padding: clamp(42px, 5.6vw, 70px) 0;
 }
 
 .section.alt {
@@ -313,9 +314,9 @@ p {
 }
 
 .grid {
-  margin-top: 22px;
+  margin-top: 28px;
   display: grid;
-  gap: 20px;
+  gap: 24px;
 }
 
 .grid.cols-3 {
@@ -334,8 +335,74 @@ p {
   background: var(--panel);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-md);
-  padding: clamp(16px, 2.2vw, 24px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+  padding: clamp(20px, 2.4vw, 30px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.24);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.section .container > h2 + p,
+.section .container > h1 + p,
+.section .container > .how-kicker + h2 + p {
+  max-width: 68ch;
+  margin-top: 14px;
+}
+
+.impact-proof {
+  padding-top: clamp(28px, 4.4vw, 52px);
+}
+
+.impact-proof-panel {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-lg);
+  padding: clamp(20px, 3vw, 32px);
+  background: linear-gradient(135deg, rgba(225, 6, 0, 0.22), rgba(16, 16, 16, 0.9));
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+.impact-proof-kicker {
+  margin: 0;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.9px;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 800;
+}
+
+.impact-proof-grid {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.impact-proof-item {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 12px;
+  background: rgba(10, 10, 10, 0.48);
+  padding: 14px;
+}
+
+.impact-proof-item strong {
+  display: block;
+  font-family: Oswald, Impact, Arial Black, sans-serif;
+  font-size: clamp(26px, 4.2vw, 42px);
+  line-height: 1;
+  color: #fff;
+}
+
+.impact-proof-item span {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .welcome-overlap {
@@ -357,7 +424,7 @@ p {
   grid-area: intro;
   background: #efefef;
   color: #222;
-  padding: 32px;
+  padding: clamp(28px, 3.2vw, 40px);
   border-radius: 0;
 }
 
@@ -467,13 +534,13 @@ p {
 .promo-fundraising {
   grid-area: fundraising;
   min-height: 430px;
-  background-image: url("images/walking-to-the-ring.webp");
+  background-image: url("images/ring-walk.webp");
 }
 
 .promo-training {
   grid-area: training;
   min-height: 215px;
-  background-image: url("images/view-pair-boxing-gloves.webp");
+  background-image: url("images/face-off-before-the-bell.webp");
 }
 
 .promo-locations {
@@ -1048,9 +1115,47 @@ p {
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  background-image: linear-gradient(130deg, rgba(14, 14, 14, 0.75), rgba(225, 6, 0, 0.6)), url("images/boxing-gloves-lying-empty-ring.webp");
+  background-image: linear-gradient(130deg, rgba(14, 14, 14, 0.72), rgba(225, 6, 0, 0.56)), url("images/after-the-fight.webp");
   background-size: cover;
   background-position: center;
+}
+
+.first-event-highlights .container {
+  text-align: center;
+}
+
+.highlights-lead {
+  margin: 12px auto 0;
+  max-width: 64ch;
+  color: #d7d7d7;
+}
+
+.first-event-grid {
+  margin-top: 20px;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: 160px;
+}
+
+.first-event-shot {
+  margin: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #0f0f0f;
+}
+
+.first-event-shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.first-event-shot-feature {
+  grid-column: span 2;
+  grid-row: span 2;
 }
 
 .home-final-cta .banner-kicker {
@@ -1166,7 +1271,7 @@ p {
   min-height: 420px;
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  background-image: linear-gradient(180deg, rgba(10, 10, 10, 0.22), rgba(10, 10, 10, 0.55)), url("images/gaiety-bar-southsea.webp");
+  background-image: linear-gradient(180deg, rgba(10, 10, 10, 0.2), rgba(10, 10, 10, 0.52)), url("images/winner-in-the-blue-corner.webp");
   background-size: cover;
   background-position: center;
 }
@@ -1175,7 +1280,7 @@ p {
   position: relative;
   overflow: hidden;
   min-height: 240px;
-  background-image: linear-gradient(180deg, rgba(8, 8, 8, 0.2), rgba(8, 8, 8, 0.72)), url("images/gaiety-bar-southsea.webp");
+  background-image: linear-gradient(180deg, rgba(8, 8, 8, 0.24), rgba(8, 8, 8, 0.74)), url("images/the-crowd.webp");
   background-size: cover;
   background-position: center;
   border-color: rgba(255, 255, 255, 0.18);
@@ -1201,7 +1306,7 @@ p {
 .event-venue-hero {
   position: relative;
   overflow: hidden;
-  background-image: linear-gradient(130deg, rgba(10, 10, 10, 0.78), rgba(10, 10, 10, 0.42)), url("images/gaiety-bar-southsea.webp");
+  background-image: linear-gradient(130deg, rgba(10, 10, 10, 0.76), rgba(10, 10, 10, 0.4)), url("images/ring-walk-blue-corner.webp");
   background-size: cover;
   background-position: center;
 }
@@ -1214,6 +1319,47 @@ p {
 
 .event-venue-hero p {
   color: rgba(255, 255, 255, 0.92);
+}
+
+.event-gallery-wrap .container {
+  text-align: center;
+}
+
+.event-gallery-lead {
+  margin: 12px auto 0;
+  max-width: 64ch;
+  color: #d6d6d6;
+}
+
+.event-gallery-grid {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: 170px;
+  gap: 12px;
+}
+
+.event-gallery-shot {
+  margin: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.event-gallery-shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.event-gallery-shot-wide {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.event-gallery-shot-tall {
+  grid-row: span 2;
 }
 
 .events-feature-copy {
@@ -1277,7 +1423,7 @@ p {
 }
 
 .events-banner {
-  background-image: linear-gradient(130deg, rgba(12, 12, 12, 0.8), rgba(225, 6, 0, 0.56)), url("images/hero-home.webp");
+  background-image: linear-gradient(130deg, rgba(12, 12, 12, 0.78), rgba(225, 6, 0, 0.54)), url("images/after-the-fight.webp");
   background-size: cover;
   background-position: center;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -1376,7 +1522,7 @@ p {
 
 .tickets-event-media {
   min-height: 260px;
-  background-image: linear-gradient(180deg, rgba(8, 8, 8, 0.2), rgba(8, 8, 8, 0.52)), url("images/gaiety-bar-southsea.webp");
+  background-image: linear-gradient(180deg, rgba(8, 8, 8, 0.2), rgba(8, 8, 8, 0.52)), url("images/punching-action-shot.webp");
   background-size: cover;
   background-position: center;
 }
@@ -1932,6 +2078,15 @@ form {
     grid-template-columns: 1fr;
   }
 
+  .impact-proof-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .impact-proof-item {
+    text-align: center;
+  }
+
   .process-strip {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -2011,6 +2166,27 @@ form {
 
   .events-feature-media {
     min-height: 280px;
+  }
+
+  .first-event-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 150px;
+  }
+
+  .first-event-shot-feature {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+
+  .event-gallery-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 150px;
+  }
+
+  .event-gallery-shot-wide,
+  .event-gallery-shot-tall {
+    grid-column: span 2;
+    grid-row: span 1;
   }
 
   .events-feature-copy {
@@ -2148,9 +2324,9 @@ form {
   }
 
   .hero.hero-photo::before {
-    background: linear-gradient(180deg, rgba(8, 8, 8, 0.8) 0%, rgba(8, 8, 8, 0.6) 45%, rgba(8, 8, 8, 0.72) 100%);
+      url("images/fight-ready-shot.webp");
   }
-
+    background-position: 72% center;
   .hero.hero-photo .container {
     text-align: center;
   }
@@ -2288,6 +2464,18 @@ form {
 }
 
 @media (max-width: 520px) {
+  .first-event-grid,
+  .event-gallery-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 190px;
+  }
+
+  .first-event-shot-feature,
+  .event-gallery-shot-wide,
+  .event-gallery-shot-tall {
+    grid-column: span 1;
+  }
+
   .footer-grid {
     grid-template-columns: 1fr;
   }
@@ -2301,6 +2489,10 @@ form {
   .welcome-overlap {
     margin-top: -120px;
     padding-top: 0;
+  }
+
+  .impact-proof + .welcome-overlap {
+    margin-top: 26px;
   }
 
   .impact-grid .card {
